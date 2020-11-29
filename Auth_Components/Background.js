@@ -25,6 +25,8 @@ const Background = ({ children }) => (
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    width:Dimensions.get('screen').width,
+    height:Dimensions.get('screen').height
   },
   container: {
     flex: 1,

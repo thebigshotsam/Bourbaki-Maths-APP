@@ -22,6 +22,7 @@ import {
 import barScreen from '../Screens/BarScanScreen';
 import { useSelector } from 'react-redux';
 import Drawer from '../Components/drawer';
+import OnBoardScreen from '../Screens/bourBakiOnboarding';
 
 const ImageNavigator=createStackNavigator({
     ImagePickerScreen:Image_Picker,
@@ -79,6 +80,7 @@ const ImageNavigator=createStackNavigator({
     });
     const AppNavigator=createSwitchNavigator({
         // Startup:startupScreen,
+        Start:OnBoardScreen,
         Auth:AuthNavigator,
         ImagePicker:DrawerNavigator
     })

@@ -23,10 +23,9 @@ const AuthLoadingScreen = ({ navigation }) => {
       navigation.navigate("HomeScreen");
     }
   });
-
   return (
     <Background>
-      <ActivityIndicator size="large" color={theme.colors.primary} />
+      <ActivityIndicator size="large" color={theme.colors.error} />
     </Background>
   );
 };

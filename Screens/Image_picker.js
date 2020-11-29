@@ -18,7 +18,7 @@ import {HeaderButtons,Item} from "react-navigation-header-buttons"
 import HeaderButton from "../Components/HeaderButton"
 import { theme } from "../Auth_Core/theme";
 import { color } from "react-native-reanimated";
-
+import MathView from "react-native-math-view"
 const Image_Picker = props => {
     const [source, setSource]= useState(null);
     const [sourceUri,setSourceUri]=useState(null)
@@ -58,9 +58,9 @@ const Image_Picker = props => {
        
     }
     const getSollution=()=>{
+      dispatch(resetAnswer());
       if (equationType){
-        dispatch(resetAnswer())
-        return props.navigation.navigate('BarScreen',{newPath:newFilePath,cropUri:cropUri})
+       return props.navigation.navigate('BarScreen',{newPath:newFilePath,cropUri:cropUri})
       }else{
         Alert.alert(
           'Alert',
@@ -104,25 +104,9 @@ const Image_Picker = props => {
                         width:'100%',height:'7%', justifyContent:'center',alignItems:'center'}}>
                     <Text style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}}>Select Problem Type</Text>
                   </View>
-                  <View style={{width:'75%',height:'75%',top:10}}>
-                    <FuntionType />
-                  </View>
-                  <View style={{
-                    height:'10%',width:'25%', justifyContent:'center',alignItems:"center",marginVertical:20}}>
-                  <View style={{
-                    height:'100%',width:'100%',
-                    borderRadius:100,
-                    shadowColor:'black',
-                    shadowOffset:{width:10,height:10},
-                    shadowRadius:10,
-                    shadowOpacity:0.6,
-                    elevation:5,
-                    backgroundColor:Colors.primary,justifyContent:'center',alignItems:'center'}}>
-                    <Pressable android_ripple={{color:'white'}} style={{width:'100%',height:'100%', justifyContent:'center'}} onPress={()=>setShowModal(false)}>
-                      <Text style={{fontFamily:'Montserrat-Medium',fontSize:15,color:'white',textAlign:'center'}}>Done</Text>
-                      </Pressable>
-                      </View>    
-                  </View>
+                  <View style={{width:'100%',height:'100%',top:10}}>
+                    <FuntionType onPress={()=>setShowModal(false)} />
+                  </View>                  
                   </View>
                   </View>                  
                 </Modal>
@@ -148,17 +132,21 @@ const Image_Picker = props => {
                     </View>
                     <Text style={{fontSize:22,fontFamily:'Montserrat-SemiBold',color:'#686868'}}>Add your Equation</Text>
                 </View>:
-                !cropped?<View style={{marginTop:'30%',marginBottom:'20%' ,width:'100%', height:'30%',justifyContent:'center',alignItems:'center'}} >
-            <CropView  sourceUrl={sourceUri} 
-              style={{width:500,height:300}} ref={crop_ref}  
+                !cropped?<View style={{
+                  marginTop:'30%',
+                  marginBottom:'20%' ,
+                  width:"100%",
+                  height:150,
+                  justifyContent:'center',
+                  alignItems:'center'}} >
+            <CropView  sourceUrl={sourceUri} keepAspectRatio={false}
+              style={{width:400,height:200}} ref={crop_ref}  
               onImageCrop={onImageCrop} >
             </CropView>
             </View>:
-              <View style={{justifyContent:'center',alignItems:'center',...styles.image}}>
-                <View style={{width:'100%',height:'100%'}}>
-               <Image style={{width:'100%',height:'100%'}} source={{uri:cropUri}} />
-               </View>
-              </View>}
+              <View style={styles.image}>
+                <Image style={{width:'100%',height:'100%'}} source={{uri:cropUri}} />
+               </View>}
               <View style={{width:'100%',height:'40%',marginTop:!source?'30%':'15%',position:'relative',padding:10}}>
               <ScrollView contentContainerStyle={{height:'100%',width:'100%'}}>
                 <View style={{
@@ -275,8 +263,8 @@ const styles= StyleSheet.create({
         },
         modalView: {
           backgroundColor: "white",
-          width:'80%',
-          height:'62%',
+          width:'95%',
+          height:Dimensions.get('screen').height*0.6,
           borderRadius: 20,
           paddingTop: 10,
           justifyContent:'space-between',
@@ -293,7 +281,7 @@ const styles= StyleSheet.create({
         },
       image:{
           width:'90%',
-          height:'40%',
+          height:'30%',
           marginVertical:40,
           marginBottom:10,
           padding:10,

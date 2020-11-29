@@ -6,6 +6,7 @@ import Colors from "../constants/Colors"
 import { equationScanned, reset } from "../store/actions/equation";
 import MathView from "react-native-math-view"
 import { theme } from "../Auth_Core/theme";
+import { ScrollView } from "react-native-gesture-handler";
 
 const barScreen = props =>{
     const equation=useSelector(state=>state.equations.eqtScanned)
@@ -49,264 +50,968 @@ const barScreen = props =>{
     let compo;
     if (answer){
       if (equationType === 'Limits'){
-        compo=<View style={{width:'100%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Limits Equation : </Text>
-        
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
-        </View>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Answer : </Text>
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.Limits} />
-        </View>
-        </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                height:'28%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.Limits} />
+            </Text>
+          </View> 
+          </ScrollView>
       }else if(equationType === 'Bodmas Checker'){
-        compo=<View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:15}}>Your solution for the bodmas is : </Text>
-        
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',
-          color:answer.GetAnswer?Colors.primary:theme.colors.error}} math={answer.GetAnswer} />
-        </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:11}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                height:'28%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.GetAnswer} />
+            </Text>
+          </View> 
+          </ScrollView>
       }
       else if(equationType === 'Binomial Expansion'){
-        compo=<View style={{width:'100%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Equation : </Text>
-        
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
-        </View>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Series : </Text>
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.Series} />
-        </View>
-        </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Series </Text></View>
+          <Text numberOfLines={4} style={{textAlign:'center',fontFamily:'Montserrat-SemiBold', color:Colors.primary}}>
+          <MathView config={{ex:9}}  
+          style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}}
+           math={answer.latex} />
+            </Text>
+          </View> 
+          </ScrollView>
       }
       else if(equationType === 'Series Expansion'){
-        compo=<View style={{width:'100%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Equation : </Text>
-        
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
-        </View>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Series : </Text>
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.Series} />
-        </View>
-        </View>
-      }else if(equationType === 'Equation Solver'){
-        compo=<View style={{width:'100%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Equation : </Text>
-        
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
-        </View>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Answer : </Text>
-        <View style={{width:'80%'}}>
-          <Text style={{textAlign:'center',color:Colors.primary}} numberOfLines={4} >
-                      {answer.solution}
-          </Text></View>
-        </View>
-        </View>
-      }else if(equationType === 'Quadratic Equation'){
-        compo=<View style={{width:'100%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Equation : </Text>
-        
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
-        </View>
-        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{fontSize:20}}>Answer : </Text>
-          <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.solution} />
-        </View>
-        </View>
-      }else if(equationType === 'Trignometric Equation'){
-        compo=<View style={{width:'100%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Equation : </Text>
-                  
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center'}}>
-                    <Text  style={{fontSize:20}}>Answer :  </Text>
-                    
-                  </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:11}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
           </View>
-      }else if(equationType === 'Differentiation'){
-        compo=<MathView config={{ex:15}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.derivative} />
-      }else if(equationType === 'Circle'){
-        compo=<View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Equation : </Text>
-                  <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.Circle} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:20}}>Area : </Text>
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.Area} />
-                  </View>
-              </View>
-      }else if(equationType === 'Ellipse'){
-        compo=<View style={{width:'80%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-                <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
-                  <Text style={{fontSize:17}}>Equation : </Text>
-                  <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.ellipseEqn} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Area : </Text>
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.areaEllipse} />
-                  </View>
-                  <View style={{flexDirection:'row',width:'100%',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Auxilliary Circle : </Text>
-                    <MathView config={{ex:8}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.ellipseAuxcircle} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Circumference : </Text>
-                    <MathView config={{ex:8}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.ellipsecircumference} />
-                  </View>
-                  </View>
-      }else if(equationType === 'Complex Numbers'){
-        compo=<View style={{width:'80%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-                <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
-                  <Text style={{fontSize:17}}>Real : </Text>
-                  <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.real} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Imaginary : </Text>
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.img} />
-                  </View>
-                  <View style={{flexDirection:'row',width:'100%',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Abs : </Text>
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.abs} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Argument : </Text>
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.arg} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Conjugate : </Text>
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.conjugate} />
-                  </View>
-                  </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Series </Text></View>
+          <Text numberOfLines={4} style={{textAlign:'center',fontFamily:'Montserrat-SemiBold', color:Colors.primary}}>
+          <MathView config={{ex:9}}  
+          style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}}
+           math={answer.latex} />
+            </Text>
+          </View> 
+          </ScrollView>
       }
+      else if(equationType === 'Fourier Expansion'){
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:11}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Series </Text></View>
+          <Text numberOfLines={4} style={{textAlign:'center',fontFamily:'Montserrat-SemiBold', color:Colors.primary}}>
+          <MathView config={{ex:9}}  
+          style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}}
+           math={answer.latex} />
+            </Text>
+          </View> 
+          </ScrollView>
+      }else if(equationType === 'Equation Solver'){
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text numberOfLines={4} style={{textAlign:'center',fontFamily:'Montserrat-SemiBold',fontSize:15,color:Colors.primary}}>
+          <MathView config={{ex:7}}
+          resizeMode='contain'  
+          style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}}
+           math={answer.latex} />
+            </Text>
+          </View> 
+          </ScrollView>
+      }else if(equationType === 'Differentiation'){
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text style={{textAlign:'center'}}>
+          <MathView config={{ex:9}}  
+          style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}}
+           math={answer.latex} />
+            </Text>
+          </View> 
+          </ScrollView>
+      }else if(equationType === 'Circle'){
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+                width:Dimensions.get('screen').width*0.90,
+                height:Dimensions.get('screen').height*0.5,
+                paddingHorizontal:5,
+                alignItems:'center'}}>
+                <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                height:'28%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Equation </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:11}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.Circle} />
+            </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                height:'28%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Area </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:11}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.Area} />
+            </Text>
+          </View>
+              </ScrollView>
+      }else if(equationType === 'Ellipse'){
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+                width:Dimensions.get('screen').width*0.90,
+                height:Dimensions.get('screen').height*0.80,
+                paddingHorizontal:5,
+                alignItems:'center'}}>
+                <View style={{flexDirection:'column',
+                justifyContent:'flex-start',
+                width:'100%',
+                height:'20%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Equation </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:8}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.ellipseEqn} />
+            </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start',
+                width:'100%',
+                height:'20%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Area </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.areaEllipse} />
+            </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start',
+                width:'100%',
+                height:'20%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Ellipse Auxiliary Circle </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.ellipseAuxcircle} />
+            </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start',
+                width:'100%',
+                height:'20%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Ellipse Circumference </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.ellipsecircumference} />
+            </Text>
+          </View>
+          </ScrollView>
+      }else if(equationType === 'Complex Numbers'){
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.85,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'column',
+          justifyContent:'flex-start',
+          width:'100%',
+          height:'20%',
+          marginTop:10,
+          backgroundColor:'white',
+          borderRadius:20,
+          elevation:5,
+          overflow:'hidden',
+          shadowOffset:{width:5,height:5},
+          shadowColor:'black',
+          shadowRadius:5,
+          shadowOpacity:0.6}}>
+    <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+      <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Real Part </Text></View>
+    <Text style={{textAlign:'center'}}>
+      <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.real} />
+      </Text>
+    </View>
+    <View style={{flexDirection:'column',
+          justifyContent:'flex-start',
+          width:'100%',
+          height:'20%',
+          marginTop:10,
+          backgroundColor:'white',
+          borderRadius:20,
+          elevation:5,
+          overflow:'hidden',
+          shadowOffset:{width:5,height:5},
+          shadowColor:'black',
+          shadowRadius:5,
+          shadowOpacity:0.6}}>
+    <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+      <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Imaginary Part </Text></View>
+    <Text style={{textAlign:'center'}}>
+      <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.img} />
+      </Text>
+    </View>
+    <View style={{flexDirection:'column',
+          justifyContent:'flex-start',
+          width:'100%',
+          height:'20%',
+          marginTop:10,
+          backgroundColor:'white',
+          borderRadius:20,
+          elevation:5,
+          overflow:'hidden',
+          shadowOffset:{width:5,height:5},
+          shadowColor:'black',
+          shadowRadius:5,
+          shadowOpacity:0.6}}>
+    <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+      <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Argument </Text></View>
+    <Text style={{textAlign:'center'}}>
+      <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.arg} />
+      </Text>
+    </View>
+    <View style={{flexDirection:'column',
+          justifyContent:'flex-start',
+          width:'100%',
+          height:'20%',
+          marginTop:10,
+          backgroundColor:'white',
+          borderRadius:20,
+          elevation:5,
+          overflow:'hidden',
+          shadowOffset:{width:5,height:5},
+          shadowColor:'black',
+          shadowRadius:5,
+          shadowOpacity:0.6}}>
+    <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+      <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Conjugate </Text></View>
+    <Text style={{textAlign:'center'}}>
+      <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.conjugate} />
+      </Text>
+    </View>
+    </ScrollView>
+    }
       else if(equationType === 'Points and Coordinates'){
-        compo=<View style={{width:'80%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-                <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
-                  <Text style={{fontSize:17}}>Points : </Text>
-                  <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.Points} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Area Collinear : </Text>
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.areCollinear} />
-                  </View>
-                  <View style={{flexDirection:'row',width:'100%',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Area Polynomial : </Text>
-                    <MathView config={{ex:8}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.AreaPolynomial} />
-                  </View>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:17}}>Perimeter Polynomial : </Text>
-                    <MathView config={{ex:8}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.PerimeterPolynomial} />
-                  </View>
-                  </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.6,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+                <View style={{flexDirection:'column',
+          justifyContent:'flex-start',
+          width:'100%',
+          height:'20%',
+          marginTop:10,
+          backgroundColor:'white',
+          borderRadius:20,
+          elevation:5,
+          overflow:'hidden',
+          shadowOffset:{width:5,height:5},
+          shadowColor:'black',
+          shadowRadius:5,
+          shadowOpacity:0.6}}>
+    <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+      <Text style={{fontSize:18,textAlign:'center',color:'white'}}>Points </Text></View>
+    <Text style={{textAlign:'center'}}>
+      <MathView config={{ex:6}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.Points} />
+      </Text>
+    </View>
+    <View style={{flexDirection:'column',
+          justifyContent:'flex-start',
+          width:'100%',
+          height:'20%',
+          marginTop:10,
+          backgroundColor:'white',
+          borderRadius:20,
+          elevation:5,
+          overflow:'hidden',
+          shadowOffset:{width:5,height:5},
+          shadowColor:'black',
+          shadowRadius:5,
+          shadowOpacity:0.6}}>
+    <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+      <Text style={{fontSize:18,textAlign:'center',color:'white'}}>Area Collinear </Text></View>
+    <Text style={{textAlign:'center'}}>
+      <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.areCollinear} />
+      </Text>
+    </View>
+    <View style={{flexDirection:'column',
+          justifyContent:'flex-start',
+          width:'100%',
+          height:'20%',
+          marginTop:10,
+          backgroundColor:'white',
+          borderRadius:20,
+          elevation:5,
+          overflow:'hidden',
+          shadowOffset:{width:5,height:5},
+          shadowColor:'black',
+          shadowRadius:5,
+          shadowOpacity:0.6}}>
+    <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+      <Text style={{fontSize:18,textAlign:'center',color:'white'}}>Area Polynomial </Text></View>
+    <Text style={{textAlign:'center'}}>
+      <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.AreaPolynomial} />
+      </Text>
+    </View>
+    <View style={{flexDirection:'column',
+          justifyContent:'flex-start',
+          width:'100%',
+          height:'20%',
+          marginTop:10,
+          backgroundColor:'white',
+          borderRadius:20,
+          elevation:5,
+          overflow:'hidden',
+          shadowOffset:{width:5,height:5},
+          shadowColor:'black',
+          shadowRadius:5,
+          shadowOpacity:0.6}}>
+    <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+      <Text style={{fontSize:18,textAlign:'center',color:'white'}}>Perimeter Polynomial </Text></View>
+    <Text style={{textAlign:'center'}}>
+      <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.PerimeterPolynomial} />
+      </Text>
+    </View>
+    </ScrollView>
       }
       else if(equationType === 'Bodmas'){
-            compo=<View style={{width:'80%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                    <Text style={{fontSize:20}}>Equation : </Text>
-                    <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+            compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+                  width:Dimensions.get('screen').width*0.90,
+                  height:Dimensions.get('screen').height*0.5,
+                  paddingHorizontal:5,
+                  alignItems:'center'}}>
+                  <View style={{flexDirection:'row',
+                        marginVertical:'3%',
+                        justifyContent:'center',
+                        width:'100%',
+                        height:'28%',
+                        alignItems:'center',
+                        borderRadius:20,
+                        backgroundColor:'white',
+                        elevation:5,
+                        padding:5,
+                        overflow:'hidden',
+                        shadowOffset:{width:5,height:5},
+                        shadowColor:'black',
+                        shadowRadius:5,
+                        shadowOpacity:0.6}}>
+                    <Text numberOfLines={3} style={{textAlign:'center'}}>
+                      <MathView config={{ex:11}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+                      </Text>
                   </View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Answer : </Text>
-                  <MathView config={{ex:15}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.ans.toString()} />
+                  <View style={{flexDirection:'column',
+                        justifyContent:'flex-start'
+                        ,width:'100%',
+                        height:'28%',
+                        marginTop:10,
+                        backgroundColor:'white',
+                        borderRadius:20,
+                        elevation:5,
+                        overflow:'hidden',
+                        shadowOffset:{width:5,height:5},
+                        shadowColor:'black',
+                        shadowRadius:5,
+                        shadowOpacity:0.6}}>
+                  <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+                    <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+                  <Text style={{textAlign:'center'}}>
+                    <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.ans.toString()} />
+                    </Text>
                   </View> 
-                  </View>
+                  </ScrollView>
       }else if(equationType === 'Indefinite Integration'){
-        compo=<View style={{width:'80%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Integral : </Text>
-                  <MathView config={{ex:15}} style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={(answer.latexString.substring(2,answer.latexString.length-2))} />
-                  </View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Answer : </Text>
-                  <MathView config={{ex:15}} style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.Integrals} />
-                  </View> 
-                  </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text style={{textAlign:'center'}}>
+          <MathView config={{ex:9}}  
+          style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}}
+           math={answer.latex} />
+            </Text>
+          </View> 
+          </ScrollView>
       }else if(equationType === 'Definite Integration'){
-        compo=<View style={{width:'80%',height:'100%',justifyContent:'center',alignItems:'center',paddingHorizontal:20}}>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Integral : </Text>
-                  <MathView config={{ex:15}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={(answer.latexString.substring(2,answer.latexString.length-2))} />
-                  </View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Answer : </Text>
-                  <MathView config={{ex:15}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.DefiniteIntegrals} />
-                  </View> 
-                  </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.DefiniteIntegrals} />
+            </Text>
+          </View> 
+          </ScrollView>
       }else if(equationType === 'Double Integration'){
-        compo=<View >
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:18}}>Integral : </Text>
-                  <MathView config={{ex:12}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={(answer.latexString.substring(2,answer.latexString.length-2))} />
-                  </View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Answer : </Text>
-                  <MathView config={{ex:12}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.DoubleDefiniteIntegrals} />
-                  </View> 
-                  </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.DoubleDefiniteIntegrals} />
+            </Text>
+          </View> 
+          </ScrollView>
       }else if(equationType === 'Triple Integration'){
-        compo=<View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Integral : </Text>
-                  <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={(answer.latexString.substring(2,answer.latexString.length-2))} />
-                  </View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Answer : </Text>
-                  <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.TripleDefiniteIntegrals} />
-                  </View> 
-                  </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center',fontSize:20}}>
+              <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold',color:Colors.primary}} 
+              math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.TripleDefiniteIntegrals} />
+            </Text>
+          </View> 
+          </ScrollView>
       }else if(equationType === 'Lines and Coordinates'){
-        compo=<View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Equation : </Text>
-                  <MathView config={{ex:12}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.LineEquation} />
-                  </View> 
-                  </View>
+        compo= <View style={{flexDirection:'column',
+        justifyContent:'flex-start'
+        ,width:'100%',
+        marginTop:10,
+        backgroundColor:'white',
+        borderRadius:20,
+        elevation:5,
+        overflow:'hidden',
+        shadowOffset:{width:5,height:5},
+        shadowColor:'black',
+        shadowRadius:5,
+        shadowOpacity:0.6}}>
+  <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+    <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Equation </Text></View>
+  <Text style={{textAlign:'center'}}>
+    <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.LineEquation} />
+    </Text>
+  </View> 
       }else if(equationType === 'Differential Equation')
       {
-        compo=<View>
-          <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Differential : </Text>
-                  <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={(answer.latexString.substring(2,answer.latexString.length-2))} />
-                  </View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Answer : </Text>
-                  <MathView config={{ex:7}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.LDE} />
-                  </View> 
-                  </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.latexString.substring(2,answer.latexString.length-2)} />
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text numberOfLines={4} style={{textAlign:'center'}}>
+            <MathView config={{ex:9}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.LDE} />
+            </Text>
+          </View> 
+          </ScrollView>
       }else if(equationType === 'Word Problems')
       {
-        compo=<View>
-          <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',paddingHorizontal:2}}>
-                  
-                    <Text numberOfLines={3} style={{fontFamily:'Montserrat-SemiBold',fontSize:15,color:Colors.primary,}} > {answer.latexString}</Text>
-                  </View>
-                <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:20}}>Answer : </Text>
-                  <MathView config={{ex:10}}  style={{fontFamily:'Montserrat-SemiBold',fontSize:20, color:Colors.primary}} math={answer.solution} />
-                  </View> 
-                  </View>
+        compo=<ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{ 
+          width:Dimensions.get('screen').width*0.90,
+          height:Dimensions.get('screen').height*0.5,
+          paddingHorizontal:5,
+          alignItems:'center'}}>
+          <View style={{flexDirection:'row',
+                marginVertical:'3%',
+                justifyContent:'center',
+                width:'100%',
+                height:'28%',
+                alignItems:'center',
+                borderRadius:20,
+                backgroundColor:'white',
+                elevation:5,
+                padding:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+            <Text numberOfLines={3} style={{textAlign:'center'}}>
+              {answer.latexString}
+              </Text>
+          </View>
+          <View style={{flexDirection:'column',
+                justifyContent:'flex-start'
+                ,width:'100%',
+                height:'28%',
+                marginTop:10,
+                backgroundColor:'white',
+                borderRadius:20,
+                elevation:5,
+                overflow:'hidden',
+                shadowOffset:{width:5,height:5},
+                shadowColor:'black',
+                shadowRadius:5,
+                shadowOpacity:0.6}}>
+          <View style={{width:'100%',height:'40%',marginBottom:'5%',justifyContent:'center',padding:2,backgroundColor:Colors.primary}}>
+            <Text style={{fontSize:20,textAlign:'center',color:'white'}}>Evaluate </Text></View>
+          <Text style={{textAlign:'center'}}>
+            <MathView config={{ex:13}}  style={{fontFamily:'Montserrat-SemiBold', color:Colors.primary}} math={answer.solution} />
+            </Text>
+          </View> 
+          </ScrollView>
       }
                       
     }
     return <View style={styles.screen}>
-        <View style={{width:'70%',marginTop:'10%',height:"40%",overflow:'scroll'}} >
+        <View style={{width:'70%',marginTop:'20%',height:"30%",overflow:'scroll'}} >
                   <QRScannerView
                     isCornerOffset={true}
                      cornerBorderLength={24}
                       cornerBorderWidth={4}
                       cornerOffsetSize={4}
                       cornerColor={Colors.accent}
-                      rectWidth={Dimensions.get('screen').width*0.8}
-                      rectHeight={Dimensions.get('screen').height*0.4}
+                      rectWidth={Dimensions.get('screen').width <500? 300: 400}
+                      rectHeight={Dimensions.get('screen').height <800? 150: 200}
                       maskColor={"#0000004D"}
                       borderWidth={2}
                       borderColor={Colors.primary}
@@ -331,7 +1036,7 @@ const barScreen = props =>{
                       {err?'Error in finding Solution':'Finding Solution...'}</Text>}
                   </View>
                   <View style={{
-                    height:'30%',
+                    height:'20%',
                     width:'100%',
                     backgroundColor:Colors.primary,justifyContent:'center',alignItems:'center',overflow:'hidden'}}>
                       <Pressable 
@@ -365,9 +1070,9 @@ const styles=StyleSheet.create({
         
       },
       modalView: {
-        backgroundColor: "white",
+        backgroundColor:'#ececec',
         width:'95%',
-        height:'40%',
+        height:'60%',
         borderRadius: 20,
         paddingTop: 10,
         justifyContent:'space-between',
